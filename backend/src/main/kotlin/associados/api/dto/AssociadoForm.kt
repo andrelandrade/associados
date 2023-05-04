@@ -9,7 +9,7 @@ data class AssociadoForm(
     val categoria: Categoria,
     val dataNascimento: LocalDate,
     val naturalidade: String,
-    val estadoNaturalidade: String,
+    val estadoNatural: String,
     val nacionalidade: String,
     val estadoCivil: String,
     val endereco: String,
