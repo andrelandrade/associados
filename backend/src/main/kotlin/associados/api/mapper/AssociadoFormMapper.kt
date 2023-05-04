@@ -5,22 +5,24 @@ import associados.api.model.Associado
 import org.springframework.stereotype.Component
 
 @Component
-class AssociadoFormMapper: Mapper<AssociadoForm, Associado> {
-    override fun map(t: AssociadoForm): Associado {
-        return Associado(
-            nome = t.nome,
-            observacao = t.observacao,
-            categoria = t.categoria,
-            dataNascimento = t.dataNascimento,
-            naturalidade = t.naturalidade,
-            estadoNatural = t.estadoNatural,
-            nacionalidade = t.nacionalidade,
-            endereco = t.endereco,
-            bairro = t.bairro,
-            estado = t.estado,
-            telefone = t.telefone,
-            mesPago = t.mesPago,
-            anoPago = t.anoPago
+class AssociadoFormMapper: Mapper<Associado, AssociadoForm> {
+    override fun map(t: Associado): AssociadoForm {
+        return AssociadoForm(
+            t.nome,
+            t.observacao,
+            t.categoria,
+            t.dataNascimento,
+            t.naturalidade,
+            t.estadoNatural,
+            t.nacionalidade,
+            t.estadoCivil,
+            t.endereco,
+            t.bairro,
+            t.cidade,
+            t.estado,
+            t.telefone,
+            t.mesPago,
+            t.anoPago
         )
     }
 }
