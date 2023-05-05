@@ -5,12 +5,16 @@ import associados.api.dto.AssociadoView
 import associados.api.mapper.AssociadoFormMapper
 import associados.api.mapper.AssociadoMapper
 import associados.api.mapper.AssociadoViewMapper
+import associados.api.model.Categoria
 import associados.api.repository.AssociadoRepository
+import jakarta.persistence.EnumType
+import jakarta.persistence.Enumerated
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import java.time.LocalDate
 
 @Service
 class AssociadoService(
@@ -38,5 +42,11 @@ class AssociadoService(
         val associado = repository.findByIdOrNull(id) ?: throw NotFoundException()
 
         return associadoFormMapper.map(associado)
+    }
+
+    fun atualizar(id: Long, form: AssociadoForm) {
+        val associado = repository.findByIdOrNull(id) ?: throw NotFoundException()
+
+        associado.atualizarInformacoes(form)
     }
 }

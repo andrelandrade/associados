@@ -1,7 +1,6 @@
 package associados.api.dto
 
 import associados.api.model.Categoria
-import jakarta.validation.constraints.NotEmpty
 import java.time.LocalDate
 
 data class AssociadoForm(
@@ -20,4 +19,5 @@ data class AssociadoForm(
     val telefone: String,
     val mesPago: Int,
     val anoPago: Int
-)
+) {
+}
