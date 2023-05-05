@@ -31,7 +31,7 @@ class AssociadoService(
     }
 
     fun listar(paginacao: Pageable): Page<AssociadoView> {
-        val associados = repository.findAll(paginacao)
+        val associados = repository.findAllByAtivoTrue(paginacao)
 
         return associados.map { t ->
             associadoViewMapper.map(t)
@@ -48,5 +48,11 @@ class AssociadoService(
         val associado = repository.findByIdOrNull(id) ?: throw NotFoundException()
 
         associado.atualizarInformacoes(form)
+    }
+
+    fun excluir(id: Long) {
+        val associado = repository.findByIdOrNull(id) ?: throw NotFoundException()
+
+        associado.inativa()
     }
 }

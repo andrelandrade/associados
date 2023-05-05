@@ -25,7 +25,7 @@ class Associado(
     var mesPago: Int,
     var anoPago: Int,
     val dataCadastro: LocalDate = LocalDate.now(),
-    val ativo: Boolean = true,
+    var ativo: Boolean = true,
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
@@ -48,5 +48,13 @@ class Associado(
         this.telefone = form.telefone
         this.mesPago = form.mesPago
         this.anoPago = form.anoPago
+    }
+
+    fun inativa() {
+        this.ativo = false
+    }
+
+    fun ativa() {
+        this.ativo = true
     }
 }
