@@ -19,8 +19,8 @@ export function NavBar() {
             /> 
 
             <div className="flex gap-x-4 items-center">
-                <img src="./src/assets/logo.png"  
-                className={`cursor-pointer duration-500 ${open && "rotate-[360deg]"}`}/>
+                <img src="./src/assets/logo_1.png"  
+                className={`h-10 w-10 cursor-pointer duration-500 ${open && "rotate-[360deg]"}`}/>
 
                 <h1 className={`text-white origin-left font-medium text-x1 duration-300 ${!open && "scale-0"}`}>Associados</h1>
             </div>
