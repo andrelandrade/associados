@@ -1,13 +1,13 @@
 
 import { NavBar } from "./components/NavBar";
-import { Visualizacao } from "./pages/Visualizacao";
+import { Procurar } from "./pages/Procurar";
 
 export function App() {
 
   return (
     <div className="flex">
       <NavBar />
-      <Visualizacao />
+      <Procurar />
     </div>
   )
 }
