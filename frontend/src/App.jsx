@@ -5,9 +5,6 @@ import { Cadastros } from "./pages/Cadastros";
 export function App() {
 
   return (
-    <div className="flex">
-      <NavBar />
-      <Cadastros />
-    </div>
+    <></>
   )
 }

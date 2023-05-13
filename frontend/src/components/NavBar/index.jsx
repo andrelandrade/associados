@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 
 export function NavBar() {
 
@@ -26,10 +27,12 @@ export function NavBar() {
             </div>
             <ul className="pt-6">
                 {Menus.map((menu, index) => (
+                    
                     <li key={index} className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-purple rounded-md ${menu.gap ? "mt-9" : "mt-2"}`}>
                        <img src={`./src/assets/${menu.src}.png`} alt="" />
                        <span className={`${!open && 'hidden'} origin-left duration-200`}>{menu.title}</span>
                     </li>
+                    
                 ))}
             </ul>
         </div>

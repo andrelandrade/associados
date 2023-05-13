@@ -1,6 +1,9 @@
+import { NavBar } from "../../components/NavBar"
+
 export function Procurar() {
     return (
         <div className="p-7 text-2x1 font-semibold flex-1 h-screen">
+
             <h1>Procurar Associados</h1>
             <br />
             <div class="mb-3">
@@ -22,6 +25,6 @@ export function Procurar() {
                 </button>
             </div>
             </div>
-        </div>   
+        </div>  
     )
 }

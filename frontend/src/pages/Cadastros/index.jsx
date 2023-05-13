@@ -1,5 +1,10 @@
+import { NavBar } from "../../components/NavBar"
+
 export function Cadastros() {
     return (
-        <div>Cadastros de associados</div>
+        <div className="flex">
+            <NavBar />
+        </div>
+        
     )
 }
