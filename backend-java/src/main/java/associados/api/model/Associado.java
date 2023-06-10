@@ -1,5 +1,6 @@
 package associados.api.model;
 
+import associados.api.dto.CadastroAssociadoDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -35,4 +36,23 @@ public class Associado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public Associado(CadastroAssociadoDTO cadastroAssociadoDTO) {
+        this.nome = cadastroAssociadoDTO.nome();
+        this.observacao = cadastroAssociadoDTO.observacao();
+        this.categoria = cadastroAssociadoDTO.categoria();
+        this.dataNascimento = cadastroAssociadoDTO.dataNascimento();
+        this.naturalidade = cadastroAssociadoDTO.naturalidade();
+        this.estadoNatural = cadastroAssociadoDTO.estadoNatural();
+        this.estadoCivil = cadastroAssociadoDTO.estadoCivil();
+        this.nacionalidade = cadastroAssociadoDTO.nacionalidade();
+        this.endereco = cadastroAssociadoDTO.endereco();
+        this.bairro = cadastroAssociadoDTO.bairro();
+        this.cidade = cadastroAssociadoDTO.cidade();
+        this.estado = cadastroAssociadoDTO.estado();
+        this.telefone = cadastroAssociadoDTO.telefone();
+        this.mesPago = cadastroAssociadoDTO.mesPago();
+        this.anoPago = cadastroAssociadoDTO.anoPago();
+    }
+
 }
