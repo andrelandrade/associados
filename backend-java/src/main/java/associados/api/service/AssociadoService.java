@@ -6,6 +6,8 @@ import associados.api.repository.AssociadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AssociadoService {
 
@@ -18,5 +20,10 @@ public class AssociadoService {
         repository.save(associado);
 
         return associado;
+    }
+
+    public Associado detalhar(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Associado não encontrado"));
     }
 }

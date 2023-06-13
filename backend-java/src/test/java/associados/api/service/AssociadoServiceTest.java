@@ -13,6 +13,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -40,5 +42,18 @@ public class AssociadoServiceTest {
         // assert
         assertNotNull(associado.getId());
         assertEquals("nome", associado.getNome());
+    }
+
+    @Test
+    public void recuperaAssociadoTest() {
+        Long id = 1L;
+        Associado associado = AssociadoTest.build(CadastroAssociadoDTOTest.build());
+
+        when(repository.findById(id)).thenReturn(Optional.of(associado));
+
+        var associadoDetalhado = service.detalhar(id);
+
+        assertNotNull(associadoDetalhado.getId());
+        assertEquals("nome", associadoDetalhado.getNome());
     }
 }
