@@ -26,4 +26,13 @@ public class AssociadoService {
         return repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Associado não encontrado"));
     }
+
+    public Associado alterar(CadastroAssociadoDTO cadastroAssociadoDTO) {
+        Associado associado = repository.findById(cadastroAssociadoDTO.id())
+                .orElseThrow(() -> new IllegalArgumentException("Associado não encontrado"));
+
+        associado.atualiza(cadastroAssociadoDTO);
+
+        return associado;
+    }
 }

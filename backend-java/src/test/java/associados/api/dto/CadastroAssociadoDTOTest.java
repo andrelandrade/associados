@@ -23,7 +23,8 @@ public class CadastroAssociadoDTOTest {
                 "estado",
                 "telefone",
                 pagoAte.getMonthValue(),
-                pagoAte.getYear()
+                pagoAte.getYear(),
+                1L
         );
     }
 }

@@ -55,4 +55,22 @@ public class Associado {
         this.anoPago = cadastroAssociadoDTO.anoPago();
     }
 
+    public void atualiza(CadastroAssociadoDTO associadoDTO) {
+        this.nome = associadoDTO.nome() != null ? associadoDTO.nome() : this.nome;
+        this.observacao = associadoDTO.observacao() != null ? associadoDTO.observacao() : this.observacao;
+        this.categoria = associadoDTO.categoria() != null ? associadoDTO.categoria() : this.categoria;
+        this.dataNascimento = associadoDTO.dataNascimento() != null ? associadoDTO.dataNascimento() : this.dataNascimento;
+        this.naturalidade = associadoDTO.naturalidade() != null ? associadoDTO.naturalidade() : this.naturalidade;
+        this.estadoNatural = associadoDTO.estadoNatural() != null ? associadoDTO.estadoNatural() : this.estadoNatural;
+        this.estadoCivil = associadoDTO.estadoCivil() != null ? associadoDTO.estadoCivil() : this.estadoCivil;
+        this.nacionalidade = associadoDTO.nacionalidade() != null ? associadoDTO.nacionalidade() : this.nacionalidade;
+        this.endereco = associadoDTO.endereco() != null ? associadoDTO.endereco() : this.endereco;
+        this.bairro = associadoDTO.bairro() != null ? associadoDTO.bairro() : this.bairro;
+        this.cidade = associadoDTO.cidade() != null ? associadoDTO.cidade() : this.cidade;
+        this.estado = associadoDTO.estado() != null ? associadoDTO.estado() : this.estado;
+        this.telefone = associadoDTO.telefone() != null ? associadoDTO.telefone() : this.telefone;
+        this.mesPago = associadoDTO.mesPago() != 0 ? associadoDTO.mesPago() : this.mesPago;
+        this.anoPago = associadoDTO.anoPago() != 0 ? associadoDTO.anoPago() : this.anoPago;
+
+    }
 }

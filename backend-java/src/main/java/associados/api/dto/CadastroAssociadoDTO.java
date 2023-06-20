@@ -21,6 +21,7 @@ public record CadastroAssociadoDTO(
         String estado,
         String telefone,
         int mesPago,
-        int anoPago
+        int anoPago,
+        Long id
 ) {
 }

@@ -56,4 +56,21 @@ public class AssociadoServiceTest {
         assertNotNull(associadoDetalhado.getId());
         assertEquals("nome", associadoDetalhado.getNome());
     }
+
+    @Test
+    public void alteraAssociadoTest() {
+        var associadoDTO = new CadastroAssociadoDTO(null, null, null, null, null,
+                null, null, null, "endereco alterado", null, null, null,
+                null, 6, 2023, 1L);
+        Associado associado = AssociadoTest.build(CadastroAssociadoDTOTest.build());
+
+        when(repository.findById(associadoDTO.id())).thenReturn(Optional.of(associado));
+
+        Associado associadoAlterado = service.alterar(associadoDTO);
+
+        assertEquals(1L, associadoAlterado.getId());
+        assertEquals("endereco alterado", associadoAlterado.getEndereco());
+        assertEquals(6, associadoAlterado.getMesPago());
+        assertEquals(2023, associadoAlterado.getAnoPago());
+    }
 }
