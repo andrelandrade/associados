@@ -1,6 +1,6 @@
 package associados.api.model;
 
-import associados.api.dto.CadastroAssociadoDTO;
+import associados.api.dto.AssociadoForm;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -37,25 +37,7 @@ public class Associado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Associado(CadastroAssociadoDTO cadastroAssociadoDTO) {
-        this.nome = cadastroAssociadoDTO.nome();
-        this.observacao = cadastroAssociadoDTO.observacao();
-        this.categoria = cadastroAssociadoDTO.categoria();
-        this.dataNascimento = cadastroAssociadoDTO.dataNascimento();
-        this.naturalidade = cadastroAssociadoDTO.naturalidade();
-        this.estadoNatural = cadastroAssociadoDTO.estadoNatural();
-        this.estadoCivil = cadastroAssociadoDTO.estadoCivil();
-        this.nacionalidade = cadastroAssociadoDTO.nacionalidade();
-        this.endereco = cadastroAssociadoDTO.endereco();
-        this.bairro = cadastroAssociadoDTO.bairro();
-        this.cidade = cadastroAssociadoDTO.cidade();
-        this.estado = cadastroAssociadoDTO.estado();
-        this.telefone = cadastroAssociadoDTO.telefone();
-        this.mesPago = cadastroAssociadoDTO.mesPago();
-        this.anoPago = cadastroAssociadoDTO.anoPago();
-    }
-
-    public void atualiza(CadastroAssociadoDTO associadoDTO) {
+    public void atualiza(AssociadoForm associadoDTO) {
         this.nome = associadoDTO.nome() != null ? associadoDTO.nome() : this.nome;
         this.observacao = associadoDTO.observacao() != null ? associadoDTO.observacao() : this.observacao;
         this.categoria = associadoDTO.categoria() != null ? associadoDTO.categoria() : this.categoria;
@@ -71,6 +53,5 @@ public class Associado {
         this.telefone = associadoDTO.telefone() != null ? associadoDTO.telefone() : this.telefone;
         this.mesPago = associadoDTO.mesPago() != 0 ? associadoDTO.mesPago() : this.mesPago;
         this.anoPago = associadoDTO.anoPago() != 0 ? associadoDTO.anoPago() : this.anoPago;
-
     }
 }

@@ -1,12 +1,11 @@
 package associados.api.dto;
 
 import associados.api.model.Categoria;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 
 import java.time.LocalDate;
 
-public record CadastroAssociadoDTO(
+public record AssociadoForm(
+        Long id,
         String nome,
         String observacao,
         Categoria categoria,
@@ -21,7 +20,6 @@ public record CadastroAssociadoDTO(
         String estado,
         String telefone,
         int mesPago,
-        int anoPago,
-        Long id
+        int anoPago
 ) {
 }

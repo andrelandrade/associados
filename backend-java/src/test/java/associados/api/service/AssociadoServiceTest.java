@@ -1,8 +1,9 @@
 package associados.api.service;
 
 
-import associados.api.dto.CadastroAssociadoDTO;
-import associados.api.dto.CadastroAssociadoDTOTest;
+import associados.api.dto.AssociadoForm;
+import associados.api.dto.AssociadoFormTest;
+import associados.api.mapper.AssociadoFormMapper;
 import associados.api.model.Associado;
 import associados.api.model.AssociadoTest;
 import associados.api.repository.AssociadoRepository;
@@ -28,16 +29,20 @@ public class AssociadoServiceTest {
     @Mock
     AssociadoRepository repository;
 
+    @Mock
+    AssociadoFormMapper associadoFormMapper;
+
     @Test
     public void cadastraAssociadoTest() {
         // arrange
-        CadastroAssociadoDTO cadastroAssociadoDTO = CadastroAssociadoDTOTest.build();
-        Associado associado = AssociadoTest.build(cadastroAssociadoDTO);
+        AssociadoForm associadoForm = AssociadoFormTest.build();
+        Associado associado = AssociadoTest.build(associadoForm);
 
         when(repository.save(any())).thenReturn(associado);
+        when(associadoFormMapper.map(associadoForm)).thenReturn(associado);
 
         // act
-        service.cadastrar(cadastroAssociadoDTO);
+        service.cadastrar(associadoForm);
 
         // assert
         assertNotNull(associado.getId());
@@ -47,7 +52,7 @@ public class AssociadoServiceTest {
     @Test
     public void recuperaAssociadoTest() {
         Long id = 1L;
-        Associado associado = AssociadoTest.build(CadastroAssociadoDTOTest.build());
+        Associado associado = AssociadoTest.build(AssociadoFormTest.build());
 
         when(repository.findById(id)).thenReturn(Optional.of(associado));
 
@@ -59,10 +64,10 @@ public class AssociadoServiceTest {
 
     @Test
     public void alteraAssociadoTest() {
-        var associadoDTO = new CadastroAssociadoDTO(null, null, null, null, null,
+        var associadoDTO = new AssociadoForm(1L, null, null, null, null, null,
                 null, null, null, "endereco alterado", null, null, null,
-                null, 6, 2023, 1L);
-        Associado associado = AssociadoTest.build(CadastroAssociadoDTOTest.build());
+                null, 6, 2023);
+        Associado associado = AssociadoTest.build(AssociadoFormTest.build());
 
         when(repository.findById(associadoDTO.id())).thenReturn(Optional.of(associado));
 

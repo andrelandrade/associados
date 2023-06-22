@@ -4,11 +4,12 @@ import associados.api.model.Categoria;
 
 import java.time.LocalDate;
 
-public class CadastroAssociadoDTOTest {
-    public static CadastroAssociadoDTO build() {
+public class AssociadoFormTest {
+    public static AssociadoForm build() {
         var pagoAte = LocalDate.now().plusMonths(3);
 
-        return new CadastroAssociadoDTO(
+        return new AssociadoForm(
+                1L,
                 "nome",
                 "rock star",
                 Categoria.APOSENTADO,
@@ -23,8 +24,7 @@ public class CadastroAssociadoDTOTest {
                 "estado",
                 "telefone",
                 pagoAte.getMonthValue(),
-                pagoAte.getYear(),
-                1L
+                pagoAte.getYear()
         );
     }
 }

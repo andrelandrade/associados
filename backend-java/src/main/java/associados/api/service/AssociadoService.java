@@ -1,12 +1,11 @@
 package associados.api.service;
 
-import associados.api.dto.CadastroAssociadoDTO;
+import associados.api.dto.AssociadoForm;
+import associados.api.mapper.AssociadoFormMapper;
 import associados.api.model.Associado;
 import associados.api.repository.AssociadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class AssociadoService {
@@ -14,8 +13,11 @@ public class AssociadoService {
     @Autowired
     private AssociadoRepository repository;
 
-    public Associado cadastrar(CadastroAssociadoDTO cadastroAssociadoDTO) {
-        var associado = new Associado(cadastroAssociadoDTO);
+    @Autowired
+    private AssociadoFormMapper associadoFormMapper;
+
+    public Associado cadastrar(AssociadoForm associadoForm) {
+        var associado = associadoFormMapper.map(associadoForm);
 
         repository.save(associado);
 
@@ -27,11 +29,11 @@ public class AssociadoService {
                 .orElseThrow(() -> new IllegalArgumentException("Associado não encontrado"));
     }
 
-    public Associado alterar(CadastroAssociadoDTO cadastroAssociadoDTO) {
-        Associado associado = repository.findById(cadastroAssociadoDTO.id())
+    public Associado alterar(AssociadoForm associadoForm) {
+        Associado associado = repository.findById(associadoForm.id())
                 .orElseThrow(() -> new IllegalArgumentException("Associado não encontrado"));
 
-        associado.atualiza(cadastroAssociadoDTO);
+        associado.atualiza(associadoForm);
 
         return associado;
     }
