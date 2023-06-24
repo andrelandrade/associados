@@ -47,6 +47,8 @@ public class AssociadoServiceTest {
         // assert
         assertNotNull(associado.getId());
         assertEquals("nome", associado.getNome());
+        assertNotNull(associado.getDataCadastro());
+        assertTrue(associado.isAtivo());
     }
 
     @Test
