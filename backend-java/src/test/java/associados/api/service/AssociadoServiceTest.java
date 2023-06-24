@@ -80,4 +80,16 @@ public class AssociadoServiceTest {
         assertEquals(6, associadoAlterado.getMesPago());
         assertEquals(2023, associadoAlterado.getAnoPago());
     }
+
+    @Test
+    public void  excluiAssociadoTest() {
+        Long id = 1L;
+        Associado associado = AssociadoTest.build(AssociadoFormTest.build());
+
+        when(repository.findById(id)).thenReturn(Optional.of(associado));
+
+        service.excluir(id);
+
+        assertFalse(associado.isAtivo());
+    }
 }

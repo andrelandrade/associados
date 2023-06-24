@@ -37,4 +37,11 @@ public class AssociadoService {
 
         return associado;
     }
+
+    public void excluir(Long id) {
+        Associado associado = repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Associado não encontrado"));
+
+        associado.setAtivo(false);
+    }
 }
