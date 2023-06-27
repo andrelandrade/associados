@@ -3,7 +3,9 @@ package associados.api.mapper;
 import associados.api.dto.AssociadoForm;
 import associados.api.model.Associado;
 import org.hibernate.boot.jaxb.mapping.AssociationAttribute;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AssociadoFormMapper implements Mapper<AssociadoForm, Associado> {
 
     @Override
