@@ -1,8 +1,10 @@
 package associados.api.service;
 
 import associados.api.dto.AssociadoForm;
+import associados.api.dto.AssociadoView;
 import associados.api.mapper.AssociadoFormMapper;
 import associados.api.mapper.AssociadoMapper;
+import associados.api.mapper.AssociadoViewMapper;
 import associados.api.model.Associado;
 import associados.api.repository.AssociadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +22,15 @@ public class AssociadoService {
     @Autowired
     private AssociadoMapper associadoMapper;
 
-    public Associado cadastrar(AssociadoForm associadoForm) {
+    @Autowired
+    private AssociadoViewMapper associadoViewMapper;
+
+    public AssociadoView cadastrar(AssociadoForm associadoForm) {
         var associado = associadoFormMapper.map(associadoForm);
 
         repository.save(associado);
 
-        return associado;
+        return associadoViewMapper.map(associado);
     }
 
     public AssociadoForm detalhar(Long id) {

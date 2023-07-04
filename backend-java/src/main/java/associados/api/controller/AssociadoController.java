@@ -24,7 +24,7 @@ public class AssociadoController {
     public ResponseEntity cadastrar(@RequestBody @Valid AssociadoForm dados, UriComponentsBuilder uriBuilder) {
         var associado = service.cadastrar(dados);
 
-        var uri = uriBuilder.path("/associados/{id}").buildAndExpand(associado.getId()).toUri();
+        var uri = uriBuilder.path("/associados/{id}").buildAndExpand(associado.id()).toUri();
 
         return ResponseEntity.created(uri).body(associado);
     }
