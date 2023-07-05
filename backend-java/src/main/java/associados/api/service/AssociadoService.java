@@ -8,7 +8,11 @@ import associados.api.mapper.AssociadoViewMapper;
 import associados.api.model.Associado;
 import associados.api.repository.AssociadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AssociadoService {
@@ -54,5 +58,9 @@ public class AssociadoService {
                 .orElseThrow(() -> new IllegalArgumentException("Associado não encontrado"));
 
         associado.setAtivo(false);
+    }
+
+    public Page<AssociadoView> listar(Pageable paginacao) {
+        return repository.findAll(paginacao).map(AssociadoView::new);
     }
 }
