@@ -43,4 +43,12 @@ public class AssociadoController {
     public ResponseEntity<Page<AssociadoView>> listar(@PageableDefault(size = 10, sort = {"id"}) Pageable paginacao) {
         return ResponseEntity.ok(service.listar(paginacao));
     }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity excluir(@PathVariable Long id) {
+        service.excluir(id);
+
+        return ResponseEntity.noContent().build();
+    }
 }

@@ -54,4 +54,8 @@ public class Associado {
         this.mesPago = associadoDTO.mesPago() != 0 ? associadoDTO.mesPago() : this.mesPago;
         this.anoPago = associadoDTO.anoPago() != 0 ? associadoDTO.anoPago() : this.anoPago;
     }
+
+    public void inativar() {
+        this.ativo = false;
+    }
 }

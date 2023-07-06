@@ -54,13 +54,12 @@ public class AssociadoService {
     }
 
     public void excluir(Long id) {
-        Associado associado = repository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Associado não encontrado"));
+        Associado associado = repository.getReferenceById(id);
 
-        associado.setAtivo(false);
+        associado.inativar();
     }
 
     public Page<AssociadoView> listar(Pageable paginacao) {
-        return repository.findAll(paginacao).map(AssociadoView::new);
+        return repository.findAllByAtivoTrue(paginacao).map(AssociadoView::new);
     }
 }
