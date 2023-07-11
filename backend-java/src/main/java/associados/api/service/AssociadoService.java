@@ -44,13 +44,13 @@ public class AssociadoService {
         return associadoMapper.map(associado);
     }
 
-    public Associado alterar(AssociadoForm associadoForm) {
-        Associado associado = repository.findById(associadoForm.id())
+    public AssociadoForm alterar(Long id, AssociadoForm associadoForm) {
+        Associado associado = repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Associado não encontrado"));
 
         associado.atualiza(associadoForm);
 
-        return associado;
+        return associadoMapper.map(associado);
     }
 
     public void excluir(Long id) {

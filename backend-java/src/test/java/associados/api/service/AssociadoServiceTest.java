@@ -37,6 +37,9 @@ public class AssociadoServiceTest {
     @Mock
     AssociadoMapper associadoMapper;
 
+    @Mock
+    AssociadoViewMapper associadoViewMapper;
+
     @Test
     public void cadastraAssociadoTest() {
         // arrange
@@ -79,13 +82,14 @@ public class AssociadoServiceTest {
         Associado associado = AssociadoTest.build(AssociadoFormTest.build());
 
         when(repository.findById(associadoDTO.id())).thenReturn(Optional.of(associado));
+        when(associadoMapper.map(associado)).thenReturn(associadoDTO);
 
-        Associado associadoAlterado = service.alterar(associadoDTO);
+        AssociadoForm associadoAlterado = service.alterar(1L, associadoDTO);
 
-        assertEquals(1L, associadoAlterado.getId());
-        assertEquals("endereco alterado", associadoAlterado.getEndereco());
-        assertEquals(6, associadoAlterado.getMesPago());
-        assertEquals(2023, associadoAlterado.getAnoPago());
+        assertEquals(1L, associadoAlterado.id());
+        assertEquals("endereco alterado", associadoAlterado.endereco());
+        assertEquals(6, associadoAlterado.mesPago());
+        assertEquals(2023, associadoAlterado.anoPago());
     }
 
     @Test

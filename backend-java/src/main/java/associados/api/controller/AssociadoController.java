@@ -51,4 +51,12 @@ public class AssociadoController {
 
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity alterar(@PathVariable Long id, @RequestBody @Valid AssociadoForm dados) {
+
+        var associado = service.alterar(id, dados);
+
+        return ResponseEntity.ok(associado);
+    }
 }
