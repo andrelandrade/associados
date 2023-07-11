@@ -4,6 +4,8 @@ package associados.api.service;
 import associados.api.dto.AssociadoForm;
 import associados.api.dto.AssociadoFormTest;
 import associados.api.mapper.AssociadoFormMapper;
+import associados.api.mapper.AssociadoMapper;
+import associados.api.mapper.AssociadoViewMapper;
 import associados.api.model.Associado;
 import associados.api.model.AssociadoTest;
 import associados.api.repository.AssociadoRepository;
@@ -32,6 +34,9 @@ public class AssociadoServiceTest {
     @Mock
     AssociadoFormMapper associadoFormMapper;
 
+    @Mock
+    AssociadoMapper associadoMapper;
+
     @Test
     public void cadastraAssociadoTest() {
         // arrange
@@ -55,13 +60,15 @@ public class AssociadoServiceTest {
     public void recuperaAssociadoTest() {
         Long id = 1L;
         Associado associado = AssociadoTest.build(AssociadoFormTest.build());
+        AssociadoForm associadoForm = AssociadoFormTest.build();
 
         when(repository.findById(id)).thenReturn(Optional.of(associado));
+        when(associadoMapper.map(associado)).thenReturn(associadoForm);
 
         var associadoDetalhado = service.detalhar(id);
 
-        assertNotNull(associadoDetalhado.getId());
-        assertEquals("nome", associadoDetalhado.getNome());
+        assertNotNull(associadoDetalhado.id());
+        assertEquals("nome", associadoDetalhado.nome());
     }
 
     @Test
@@ -86,7 +93,7 @@ public class AssociadoServiceTest {
         Long id = 1L;
         Associado associado = AssociadoTest.build(AssociadoFormTest.build());
 
-        when(repository.findById(id)).thenReturn(Optional.of(associado));
+        when(repository.getReferenceById(id)).thenReturn(associado);
 
         service.excluir(id);
 
